@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+    <Properties>
+        <property name="fileSize">99 MB</property>
+        <property name="patternLayout">%d{dd/MM/yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</property>
+    </Properties>
+    <appenders>
+
+        <RollingFile name="work" fileName="logs/aiservice.log"
+                     filePattern="./logs/aiservice_%d{yyyyMMddHHmmss}.log">
+            <patternLayout charset="utf8" pattern="${patternLayout}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="${fileSize}"/>
+            </Policies>
+        </RollingFile>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${patternLayout}"/>
+        </Console>
+
+    </appenders>
+
+    <loggers>
+        <root level="info">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="work"/>
+        </root>
+    </loggers>
+</configuration>
