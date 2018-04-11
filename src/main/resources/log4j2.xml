@@ -6,8 +6,8 @@
     </Properties>
     <appenders>
 
-        <RollingFile name="work" fileName="logs/aiservice.log"
-                     filePattern="./logs/aiservice_%d{yyyyMMddHHmmss}.log">
+        <RollingFile name="work" fileName="logs/wxgzh.log"
+                     filePattern="./logs/wxgzh%d{yyyyMMddHHmmss}.log">
             <patternLayout charset="utf8" pattern="${patternLayout}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="${fileSize}"/>
