@@ -3,6 +3,7 @@ package top.bingchenglin.wxgzh.config.datasource;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 
 @Configuration
 @EnableConfigurationProperties({DruidDataSourceProperties.class})
+@Log4j2
 public class DruidConfiguration {
 
     @Autowired
@@ -44,7 +46,7 @@ public class DruidConfiguration {
             druidDataSource.setFilters(properties.getFilters());
             druidDataSource.init();
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error(e);
         }
         return druidDataSource;
     }
